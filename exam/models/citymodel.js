@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
-const exsubcategorySchema = mongoose.Schema({
-    categoryId: {
+const citySchema = mongoose.Schema({
+    countryId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'category'
+        ref: 'country'
     },
-    subcategoryId: {
+    stateId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'subcategory'
+        ref: 'state'
     },
-    exsubcategory :{
+    city :{
         type:String,
         required:true
     },
@@ -18,5 +18,4 @@ const exsubcategorySchema = mongoose.Schema({
         default :'Active'
     }
 })
-const exsubcategory = mongoose.model('exsubcategory', exsubcategorySchema);
-module.exports = exsubcategory;
+module.exports = mongoose.model('city', citySchema);

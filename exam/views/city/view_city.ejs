@@ -43,7 +43,7 @@
                                     <div class="d-flex justify-content-between">
                                         <h5 class="card-title">Table</h5>
 
-                                        <a href="/product/add" class="btn btn-success">Add</a>
+                                        <a href="/city/add" class="btn btn-success">Add</a>
                                     </div>
                                 </div>
 
@@ -51,56 +51,36 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Category</th>
-                                            <th scope="col">Subcategory</th>
-                                            <th scope="col">Exsubcategory</th>
-                                            <th scope="col">Product</th>
-                                            <th scope="col">Description</th>
-                                            <th scope="col">Qnty</th>
-                                            <th scope="col">price</th>
-                                            <th scope="col">Image</th> 
+                                            <th scope="col">country</th>
+                                            <th scope="col">state</th>
+                                            <th scope="col">city</th>
                                             <th scope="col">Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <% product.map((val,i) =>{%>
+                                        <% city.map((val,i) =>{%>
                                           <tr>
                                               <td>
-                                                  <%=++i %>
+                                                  <%= ++i %>
                                               </td>
                                               <td>
-                                                  <%= val.categoryId.category %>
+                                                  <%= val.countryId.country %>
                                               </td>
                                               <td>
-                                                <%= val.subcategoryId.subcategory%>
-                                            </td>
-                                           
-                                            <td>
-                                                <%= val.exsubcategoryId.exsubcategory %>
-                                            </td>
-                                            <td>
-                                                <%= val.product %>
-                                            </td>
-                                            <td>
-                                                <%= val.description %>
-                                            </td>
-                                            <td>
-                                                <%= val.qnty %>
-                                            </td>
-                                            <td>
-                                                <%= val.price %>
-                                            </td>
-                                            <td>
-                                                <img src="<%= val.image %>" width="100" alt="">
-                                            </td>
+                                                  <%= val.stateId.state%>
+                                              </td>
+                                             
+                                              <td>
+                                                  <%= val.city %>
+                                              </td>
                                               <th scope="row">
-                                                  <a href="/product/statusChange?status=<%= val.status%>&statusid=<%= val.id %>"
+                                                  <a href="/city/statusChange?status=<%= val.status%>&statusid=<%= val.id %>"
                                                    class="btn text-white <%if (val.status == 'active'){%> btn-success<%}else{%> btn-danger<%}%>"><%=val.status %></a>
                                               </th>
                                               <th scope="row">
-                                                 <a href="/product/deletProduct?deleteId=<%= val.id %>" class="btn bg-danger text-white">Delete</a>
-                                                 <a href="/product/editProduct?editid=<%= val.id %> " class="btn bg-info text-white">Edit</a>
+                                                 <a href="/city/deletecity?deleteId=<%= val.id %>" class="btn bg-danger text-white">Delete</a>
+                                                 <a href="/city/editcity?editid=<%= val.id %> " class="btn bg-info text-white">Edit</a>
                                               </th>
   
                                           </tr>

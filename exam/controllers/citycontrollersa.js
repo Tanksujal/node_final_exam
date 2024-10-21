@@ -1,14 +1,14 @@
-const categoryModle = require('../models/countrymodel')
-const subcategoryModle = require('../models/statemodel')
-const exsubcategoryModle = require('../models/citymodel')
+const countrymodel= require('../models/countrymodel')
+const stateModel = require('../models/statemodel')
+const cityModel = require('../models/citymodel')
 
-const ViewExsubcatagorypage = async (req, res) => {
+const viewcity = async (req, res) => {
     try {
-        let exsubcategory = await exsubcategoryModle.find({}).populate("categoryId").populate('subcategoryId');
+        let city = await cityModel.find({}).populate("countryId").populate('stateId');
         // console.log(exsubcategory);
         
-        return res.render('exsubcategory/view_exsubcategory',{
-            exsubcategory:exsubcategory
+        return res.render('city/view_city',{
+            city:city
         })
 
     } catch (error) {
@@ -17,13 +17,13 @@ const ViewExsubcatagorypage = async (req, res) => {
 
     }
 }
-const AddExsubatagorypage = async(req, res) => {
+const addcity = async(req, res) => {
     try {
-        const category = await categoryModle.find({})
-        const subcategory = await subcategoryModle.find({})
-        return res.render('exsubcategory/add_exsubcategory',{
-            category:category,
-            subcategory:subcategory
+        const country = await countrymodel.find({})
+        const state = await stateModel.find({})
+        return res.render('city/add_city',{
+            country:country,
+            state:state
         })
         
     } catch (error) {
@@ -33,18 +33,18 @@ const AddExsubatagorypage = async(req, res) => {
     }
 }
 
-const insertExsubcategory = async (req, res) => {
+const insertcity = async (req, res) => {
     try {
-        const{category, subcategory,exsubcategory} = req.body;
+        const{country, state,city} = req.body;
         // console.log(req.body);
-        await exsubcategoryModle.create({
-            categoryId: category,
-            subcategoryId: subcategory,
-            exsubcategory:exsubcategory
+        await cityModel.create({
+            countryId: country,
+            stateId: state,
+            city:city
 
         })
         console.log('Added Exsubcategory...');
-        return res.redirect('/exsubcategory')
+        return res.redirect('/city')
 
 
     } catch (error) {
@@ -55,14 +55,14 @@ const insertExsubcategory = async (req, res) => {
 
 }
 
-const deletExsubCatagory = async (req, res) => {
+const deletecity = async (req, res) => {
     try {
         deleteid = req.query.deleteId;
         // console.log(deleteid);
 
-        await exsubcategoryModle.findByIdAndDelete(deleteid);
+        await cityModel.findByIdAndDelete(deleteid);
         console.log('ExsubCategory Deleted...');
-        return res.redirect('/exsubcategory')
+        return res.redirect('/city')
 
     } catch (error) {
         console.log(error);
@@ -70,19 +70,19 @@ const deletExsubCatagory = async (req, res) => {
 
     }
 }
-const editExsubCatagory = async (req, res) => {
+const editcity = async (req, res) => {
     try {
         editid = req.query.editid;
         // console.log(editid);
-        const category = await categoryModle.find({})
-        const subcategory = await subcategoryModle.find({})
-        const single = await exsubcategoryModle.findById(editid);
+        const country = await countrymodel.find({})
+        const state = await stateModel.find({})
+        const single = await cityModel.findById(editid);
         // console.log(single);
         
-        return res.render('exsubcategory/edit_exsubcategory', {
+        return res.render('city/edit_city', {
             single:single,
-            category:category,
-            subcategory:subcategory
+            country:country,
+            state:state
         })
 
     } catch (error) {
@@ -92,17 +92,17 @@ const editExsubCatagory = async (req, res) => {
     }
 }
 
-const updateExsubcategory = async (req, res) => {
+const updatecity = async (req, res) => {
     try {
-        const { editid, category , subcategory,exsubcategory} = req.body;
+        const { editid, country , state,city} = req.body;
         // console.log(editid,category);
-        await exsubcategoryModle.findByIdAndUpdate(editid, {
-            categoryId: category,
-            subcategoryId: subcategory,
-            exsubcategory:exsubcategory
+        await cityModel.findByIdAndUpdate(editid, {
+            countryId: country,
+            stateId: state,
+            city:city
         })
         console.log('ExsubCategory Updated...');
-        return res.redirect('/exsubcategory')
+        return res.redirect('/city')
         
 
     } catch (error) {
@@ -117,17 +117,17 @@ const statusChange = async(req,res) =>{
         const statusid = req.query.statusid;
         // console.log(status,statusid);
         if(status == 'active'){
-            await exsubcategoryModle.findByIdAndUpdate(statusid,{
+            await cityModel.findByIdAndUpdate(statusid,{
                 status: 'inactive'
             })
             console.log('Category Status Changed to Inactive...');
-            return res.redirect('/exsubcategory')
+            return res.redirect('/city')
         }else{
-            await exsubcategoryModle.findByIdAndUpdate(statusid,{
+            await cityModel.findByIdAndUpdate(statusid,{
                 status: 'active'
             })
             console.log('Category Status Changed to Active...');
-            return res.redirect('/exsubcategory')
+            return res.redirect('/city')
         }
         
     } catch (error) {
@@ -137,5 +137,5 @@ const statusChange = async(req,res) =>{
     }
 }
 module.exports = {
-    ViewExsubcatagorypage,AddExsubatagorypage,insertExsubcategory,deletExsubCatagory,statusChange,editExsubCatagory,updateExsubcategory
+    viewcity,addcity,insertcity,deletecity,statusChange,editcity,updatecity
 }

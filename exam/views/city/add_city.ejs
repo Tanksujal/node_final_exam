@@ -43,17 +43,17 @@
                             </div>
                             <% } %>
 
-                                <form action="/exsubcategory/insertstate" method="post" class="form-horizontal">
+                                <form action="/city/insertcity" method="post" class="form-horizontal">
                                     <div class="card-body">
-                                        <h4 class="card-title">Add Exsubcategory</h4>
+                                        <h4 class="card-title">Add city</h4>
                                         <div class="form-group row">
                                             <label for="fname"
-                                                class="col-sm-3 text-end control-label col-form-label">Category</label>
+                                                class="col-sm-3 text-end control-label col-form-label">country</label>
                                             <div class="col-sm-9">
-                                                <select name="category" class="form-control" id="fname">
-                                                    <option >--select catagory--</option>
-                                                    <% category.map((val) =>{%>
-                                                        <option value="<%= val._id %>"><%= val.category %></option>
+                                                <select name="country" class="form-control" id="fname">
+                                                    <option >--select country--</option>
+                                                    <% country.map((val) =>{%>
+                                                        <option value="<%= val._id %>"><%= val.country %></option>
                                                         
                                                     <%})%>
                                                 </select>
@@ -61,12 +61,12 @@
                                         </div>
                                         <div class="form-group row">
                                             <label for="fname"
-                                                class="col-sm-3 text-end control-label col-form-label">Subcategory</label>
+                                                class="col-sm-3 text-end control-label col-form-label">state</label>
                                             <div class="col-sm-9">
-                                                <select name="subcategory" class="form-control" id="fname">
-                                                    <option value="">--select subcategory--</option>
-                                                    <% subcategory.map((val) =>{%>
-                                                        <option value="<%= val._id %>"><%= val.subcategory %></option>
+                                                <select name="state" class="form-control" id="fname">
+                                                    <option value="">--select state--</option>
+                                                    <% state.map((val) =>{%>
+                                                        <option value="<%= val._id %>"><%= val.state %></option>
                                                         
                                                     <%})%>
                                                 </select>
@@ -74,11 +74,11 @@
                                         </div>
                                         <div class="form-group row">
                                             <label for="fname"
-                                                class="col-sm-3 text-end control-label col-form-label">Exsubcategory</label>
+                                                class="col-sm-3 text-end control-label col-form-label">city</label>
                                            
                                             <div class="col-sm-9">
-                                                <input type="text" name="exsubcategory" class="form-control" id="fname"
-                                                    placeholder="Exsubcategory Name Here" />
+                                                <input type="text" name="city" class="form-control" id="fname"
+                                                    placeholder="city  Name Here" />
                                             </div>
                                         </div>
 
@@ -88,7 +88,7 @@
                                             <button type="submit" class="btn btn-primary">
                                                 Submit
                                             </button>
-                                            <a href="/exsubcategory" class="btn btn-info">View</a>
+                                            <a href="/city" class="btn btn-info">View</a>
                                         </div>
                                     </div>
                                 </form>
